@@ -1,0 +1,66 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication" />
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation" />
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData" />
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZRTR_C_ADV_VAT_DELETE_CDS" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="ZRTR_C_ADV_VAT_DELETEType" sap:label="Advantage VAT TAX Delete" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs" />
+                    <PropertyRef Name="Cpudat" />
+                    <PropertyRef Name="Invoice_Date" />
+                    <PropertyRef Name="Invoice" />
+                    <PropertyRef Name="Kunnr" />
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" />
+                <Property Name="Cpudat" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Posting Date" sap:quickinfo="Posting Date in the Document" />
+                <Property Name="Invoice_Date" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Invoice Date" />
+                <Property Name="Invoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoice number" sap:quickinfo="Invoice Number" />
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number" />
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created" />
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object" />
+                <Property Name="Gjahr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" />
+                <Property Name="Monat" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Posting period" sap:quickinfo="Fiscal period" />
+                <Property Name="Adv_Module" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Adv Module Type" sap:quickinfo="Advantage Module Type" />
+                <Property Name="Hwaer" Type="Edm.String" MaxLength="5" sap:label="Local Currency" sap:semantics="currency-code" />
+                <Property Name="Dmbtr" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Hwaer" sap:label="Amt.in loc.cur." sap:quickinfo="Amount in local currency" />
+                <Property Name="Mwsts" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Hwaer" sap:label="LC Tax Amount" sap:quickinfo="Tax Amount in Local Currency" />
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code" />
+                <Property Name="Wrbtr" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Waers" sap:label="Amount" sap:quickinfo="Amount in document currency" />
+                <Property Name="Wmwst" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Waers" sap:label="Tax Amount" sap:quickinfo="Tax Amount in Document Currency" />
+                <Property Name="Kbetr" Type="Edm.Decimal" Precision="12" Scale="3" sap:unit="Hwaer" sap:label="Tax Rate (Amt or %)" sap:quickinfo="Tax Rate (condition amount or percentage)" />
+            </EntityType>
+            <EntityContainer Name="ZRTR_C_ADV_VAT_DELETE_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZRTR_C_ADV_VAT_DELETE" EntityType="ZRTR_C_ADV_VAT_DELETE_CDS.ZRTR_C_ADV_VAT_DELETEType" sap:creatable="false" sap:updatable="false" sap:content-version="1" />
+            </EntityContainer>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZRTR_C_ADV_VAT_DELETE_CDS.ZRTR_C_ADV_VAT_DELETE_CDS_Entities">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://s4dbasdev130:443/sap/opu/odata/sap/ZRTR_C_ADV_VAT_DELETE_CDS/$metadata" />
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://s4dbasdev130:443/sap/opu/odata/sap/ZRTR_C_ADV_VAT_DELETE_CDS/$metadata" />
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
